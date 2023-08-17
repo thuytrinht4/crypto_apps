@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cryptocurrency Trader Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/dash_style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Cryptocurrency Trader Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Market Data</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="portfolio">
+        <h2>Your Portfolio</h2>
+        <table>
+            <tr>
+                <th>Cryptocurrency</th>
+                <th>Amount Owned</th>
+                <th>Current Price</th>
+                <th>Value</th>
+            </tr>
+            <!-- Loop through user's cryptocurrency holdings and display them -->
+            {% for holding in user_data.portfolio %}
+            <tr>
+                <td>{{"BTC"}}</td>
+                <td>{{10}}</td>
+                <td>{{28000}}</td>
+                <td>{{280000}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="market-data">
+        <h2>Market Data</h2>
+        <!-- Display live cryptocurrency market data, charts, etc. -->
+    </section>
+</body>
+
+</html>

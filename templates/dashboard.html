@@ -13,7 +13,8 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Market Data</a></li>
+                <li><a href="#">Portfolio Distribution</a></li>
+                <li><a href="#">Historical Performance</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </nav>
@@ -40,10 +41,32 @@
         </table>
     </section>
 
-    <section class="market-data">
-        <h2>Market Data</h2>
-        <!-- Display live cryptocurrency market data, charts, etc. -->
+    <section class="port-distribution">
+        <h2>Portfolio Distribution</h2>
     </section>
+
+
+    <script>
+        // <!-- Display live cryptocurrency market data, charts, etc. -->
+        function updatePortfolioDistribution() {
+            const labels = user_data.cryptocurrencies.map(crypto => crypto.name);
+            const values = user_data.cryptocurrencies.map(crypto => crypto.value);
+
+            const trace = {
+                labels: labels,
+                values: values,
+                type: 'pie'
+            };
+            const layout = {
+                title: 'Portfolio Distribution',
+            };
+            Plotly.newPlot('portfolio-pie', [trace], layout);
+        }
+
+        // Initial data update
+        updatePortfolioDistribution();
+
+    </script>
 </body>
 
 </html>

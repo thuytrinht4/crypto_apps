@@ -5,7 +5,8 @@ import os
 app = Flask(__name__)
 
 # Mock user database (replace with a real database)
-users = {'Crypto User 1': '123456'}
+users = {'Crypto User 1': '123456',
+         'Crypto User 2': '123456'}
 
 
 @app.route('/')

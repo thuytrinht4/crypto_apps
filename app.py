@@ -45,7 +45,17 @@ def dashboard():
             {'cryptocurrency': 'Cardano', 'amount_owned': 450,
              'current_price': 0.25, 'value': 114}
             # Add more holdings as needed
-        ]
+        ],
+        'username': 'Crypto User 2',
+        'user_id': 2,
+        'email': 'crypto_user2@gemini_test.com',
+        'portfolio': [
+            {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2726,
+             'current_price': 26500, 'value': 7223},
+            {'cryptocurrency': 'Ethereum', 'amount_owned': 1.6829,
+             'current_price': 1650, 'value': 2777}
+            # Add more holdings as needed
+        ],
     }
     # return render_template('dashboard.html', user_data=user_data)
     return render_template('dashboard.html', user_data=user_data)

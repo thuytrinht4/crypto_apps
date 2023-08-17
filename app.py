@@ -13,7 +13,7 @@ def home():
     return render_template('login.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']
@@ -54,7 +54,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     # Redirect to the desired URL after logout (e.g., home page)
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 # @app.route('/')
 # def hello_world():

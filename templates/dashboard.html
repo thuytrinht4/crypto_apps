@@ -50,8 +50,11 @@
 
 
     <script>
+        // Access user_data from the template context
+        const user_data = {{ user_data | tojson | safe }};
+
         // <!-- Display live cryptocurrency market data, charts, etc. -->
-        function updatePortfolioDistribution(user_data) {
+        function updatePortfolioDistribution() {
             const labels = user_data.portfolio.map(holding => holding.cryptocurrency);
             const values = user_data.portfolio.map(holding => holding.value);
 

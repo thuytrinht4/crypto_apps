@@ -19,9 +19,23 @@ def login():
     password = request.form['password']
 
     if username in users and users[username] == password:
-        return 'Login successful!'
+        return redirect(url_for('dashboard'))
     else:
-        return 'Login failed. Please try again.'
+        print('Login failed. Please try again.')
+        return redirect(url_for('login'))
+
+
+@app.route('/dashboard')
+def dashboard():
+    # User is logged in, show dashboard
+    # user_data =
+    # return render_template('dashboard.html', user_data=user_data)
+    return render_template('dashboard.html')
+
+
+@app.route('/logout')
+def logout():
+    return redirect(url_for('login'))
 
 # @app.route('/')
 # def hello_world():

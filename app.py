@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Mock user database (replace with a real database)
-users = {'test1': '123456'}
+users = {'Crypto User 1': '123456'}
 
 
 @app.route('/')
@@ -13,7 +13,7 @@ def home():
     return render_template('login.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']

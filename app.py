@@ -34,10 +34,16 @@ def dashboard():
         'user_id': 1,
         'email': 'crypto_user1@gemini_test.com',
         'portfolio': [
-            {'cryptocurrency': 'Bitcoin', 'amount_owned': 1.5,
-             'current_price': 45000, 'value': 67500},
-            {'cryptocurrency': 'Ethereum', 'amount_owned': 5.0,
-             'current_price': 3200, 'value': 16000},
+            {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2485,
+             'current_price': 26500, 'value': 6585},
+            {'cryptocurrency': 'Ethereum', 'amount_owned': 1.5341,
+             'current_price': 1650, 'value': 2531},
+            {'cryptocurrency': 'Binance', 'amount_owned': 1.9755,
+             'current_price': 218, 'value': 431},
+            {'cryptocurrency': 'Ripple', 'amount_owned': 679,
+             'current_price': 0.5, 'value': 339},
+            {'cryptocurrency': 'Cardano', 'amount_owned': 450,
+             'current_price': 0.25, 'value': 114}
             # Add more holdings as needed
         ]
     }

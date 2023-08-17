@@ -49,8 +49,8 @@
     <script>
         // <!-- Display live cryptocurrency market data, charts, etc. -->
         function updatePortfolioDistribution() {
-            const labels = user_data.cryptocurrencies.map(crypto => crypto.name);
-            const values = user_data.cryptocurrencies.map(crypto => crypto.value);
+            const labels = user_data.cryptocurrencies.map(holding => holding.cryptocurrency);
+            const values = user_data.cryptocurrencies.map(holding => holding.value);
 
             const trace = {
                 labels: labels,

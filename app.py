@@ -28,9 +28,21 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     # User is logged in, show dashboard
-    # user_data =
+    # user_data as a dummy data
+    user_data = {
+        'username': 'Crypto User 1',
+        'user_id': 1,
+        'email': 'crypto_user1@gemini_test.com',
+        'portfolio': [
+            {'cryptocurrency': 'Bitcoin', 'amount_owned': 1.5,
+             'current_price': 45000, 'value': 67500},
+            {'cryptocurrency': 'Ethereum', 'amount_owned': 5.0,
+             'current_price': 3200, 'value': 16000},
+            # Add more holdings as needed
+        ]
+    }
     # return render_template('dashboard.html', user_data=user_data)
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', user_data=user_data)
 
 
 @app.route('/logout')

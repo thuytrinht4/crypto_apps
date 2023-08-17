@@ -31,10 +31,10 @@
             <!-- Loop through user's cryptocurrency holdings and display them -->
             {% for holding in user_data.portfolio %}
             <tr>
-                <td>{{"BTC"}}</td>
-                <td>{{10}}</td>
-                <td>{{28000}}</td>
-                <td>{{280000}}</td>
+                <td>{{ holding.cryptocurrency }}</td>
+                <td>{{ holding.amount_owned }}</td>
+                <td>{{ holding.current_price }}</td>
+                <td>{{ holding.value }}</td>
             </tr>
             {% endfor %}
         </table>

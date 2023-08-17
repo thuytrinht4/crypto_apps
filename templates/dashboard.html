@@ -36,8 +36,8 @@
             <tr>
                 <td>{{ holding.cryptocurrency }}</td>
                 <td>{{ holding.amount_owned }}</td>
-                <td>{{ holding.current_price }}</td>
-                <td>{{ holding.value }}</td>
+                <td>{{ holding.current_price.toLocaleString() }}</td>
+                <td>{{ holding.value.toLocaleString() }}</td>
             </tr>
             {% endfor %}
         </table>

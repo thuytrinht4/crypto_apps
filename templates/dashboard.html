@@ -47,10 +47,19 @@
 
 
     <script>
+        // Dummy user_data (replace with your actual data)
+        const user_data = {
+            'cryptocurrencies': [
+                { 'name': 'Bitcoin', 'value': 30000 },
+                { 'name': 'Ethereum', 'value': 8000 },
+                { 'name': 'XRP', 'value': 150 },
+                // Add more cryptocurrency data
+            ]
+        };
         // <!-- Display live cryptocurrency market data, charts, etc. -->
-        function updatePortfolioDistribution(user_data = user_data) {
-            const labels = user_data.portfolio.map(holding => holding.cryptocurrency);
-            const values = user_data.portfolio.map(holding => holding.value);
+        function updatePortfolioDistribution() {
+            const labels = user_data.cryptocurrencies.map(crypto => crypto.name);
+            const values = user_data.cryptocurrencies.map(crypto => crypto.value);
 
             const trace = {
                 labels: labels,
@@ -64,7 +73,7 @@
         }
 
         // Initial data update
-        updatePortfolioDistribution(user_data);
+        updatePortfolioDistribution();
 
     </script>
 </body>

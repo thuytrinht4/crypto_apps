@@ -1,5 +1,5 @@
 # from flask import Flask
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
 
 app = Flask(__name__)
@@ -7,6 +7,11 @@ app = Flask(__name__)
 # Mock user database (replace with a real database)
 users = {'Crypto User 1': '123456',
          'Crypto User 2': '123456'}
+dummy_users = {
+    'Crypto User 1': {'password': '123456'},
+    'Crypto User 2': {'password': '123456'},
+    # Add more users...
+}
 
 
 @app.route('/')
@@ -14,16 +19,19 @@ def home():
     return render_template('login.html')
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-    if username in users and users[username] == password:
+    # if username in users and users[username] == password:
+    if username in dummy_users and dummy_users[username]['password'] == password:
+        session['user_id'] = username  # Store user_id in session
         return redirect(url_for('dashboard'))
     else:
         print('Login failed. Please try again.')
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
 
 
 @app.route('/dashboard')
@@ -46,20 +54,52 @@ def dashboard():
             {'cryptocurrency': 'Cardano', 'amount_owned': 450,
              'current_price': 0.25, 'value': 114}
             # Add more holdings as needed
-        ],
-        'username': 'Crypto User 2',
-        'user_id': 2,
-        'email': 'crypto_user2@gemini_test.com',
-        'portfolio': [
-            {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2726,
-             'current_price': 26500, 'value': 7223},
-            {'cryptocurrency': 'Ethereum', 'amount_owned': 1.6829,
-             'current_price': 1650, 'value': 2777}
-            # Add more holdings as needed
-        ],
+        ]
     }
+
+    dummy_user_data = {
+        'Crypto User 1': {
+            'user_name': 'John Dow',
+            'email': 'crypto_user1@gemini_test.com',
+            'portfolio': [
+                {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2485,
+                 'current_price': 26500, 'value': 6585},
+                {'cryptocurrency': 'Ethereum', 'amount_owned': 1.5341,
+                 'current_price': 1650, 'value': 2531},
+                {'cryptocurrency': 'Binance', 'amount_owned': 1.9755,
+                 'current_price': 218, 'value': 431},
+                {'cryptocurrency': 'Ripple', 'amount_owned': 679,
+                 'current_price': 0.5, 'value': 339},
+                {'cryptocurrency': 'Cardano', 'amount_owned': 450,
+                 'current_price': 0.25, 'value': 114}
+                # Add more cryptocurrency data
+            ]
+        },
+        'Crypto User 2': {
+            'user_name': 'Tuan Trinh',
+            'email': 'crypto_user1@gemini_test.com',
+            'portfolio': [
+                {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2726,
+                 'current_price': 26500, 'value': 7223},
+                {'cryptocurrency': 'Ethereum', 'amount_owned': 1.6829,
+                 'current_price': 1650, 'value': 2777}
+                # Add more cryptocurrency data
+            ]
+        }
+    }
+    # Add more users...
+
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = dummy_user_data.get(user_id)
+        if user:
+            return render_template('dashboard.html', user=user)
+        else:
+            return "User not found"
+    else:
+        return redirect(url_for('home'))
     # return render_template('dashboard.html', user_data=user_data)
-    return render_template('dashboard.html', user_data=user_data)
+    # return render_template('dashboard.html', user_data=user_data)
 
 
 @app.route('/logout')

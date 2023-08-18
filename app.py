@@ -91,9 +91,9 @@ def dashboard():
 
     if 'user_id' in session:
         user_id = session['user_id']
-        user = dummy_user_data.get(user_id)
-        if user:
-            return render_template('dashboard.html', user=user)
+        user_data = dummy_user_data.get(user_id)
+        if user_data:
+            return render_template('dashboard.html', user_data=user_data)
         else:
             return "User not found"
     else:

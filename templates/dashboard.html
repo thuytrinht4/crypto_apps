@@ -20,6 +20,8 @@
         </nav>
     </header>
 
+    <h2 class="greeting">Hello, {{ user_data.user_name }}</h2>
+
     <section class="total-portfolio">
         <h2>Your Portfolio Value</h2>
         <p class="portfolio-value large-value">${{ session.total_fund | default(0) | format_currency }}</p>

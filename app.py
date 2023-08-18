@@ -4,6 +4,9 @@ import os
 
 app = Flask(__name__)
 
+# Set a temporary secret key for testing
+app.secret_key = 'temporary_test_key'
+
 # Mock user database (replace with a real database)
 users = {'Crypto User 1': '123456',
          'Crypto User 2': '123456'}
@@ -110,3 +113,7 @@ def logout():
 # @app.route('/')
 # def hello_world():
 #     return 'Hello, world!'
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

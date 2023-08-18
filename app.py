@@ -8,8 +8,6 @@ app = Flask(__name__)
 app.secret_key = 'temporary_test_key'
 
 # Mock user database (replace with a real database)
-users = {'Crypto User 1': '123456',
-         'Crypto User 2': '123456'}
 dummy_users = {
     'Crypto User 1': {'password': '123456'},
     'Crypto User 2': {'password': '123456'},
@@ -41,25 +39,6 @@ def login():
 def dashboard():
     # User is logged in, show dashboard
     # user_data as a dummy data
-    user_data = {
-        'username': 'Crypto User 1',
-        'user_id': 1,
-        'email': 'crypto_user1@gemini_test.com',
-        'portfolio': [
-            {'cryptocurrency': 'Bitcoin', 'amount_owned': 0.2485,
-             'current_price': 26500, 'value': 6585},
-            {'cryptocurrency': 'Ethereum', 'amount_owned': 1.5341,
-             'current_price': 1650, 'value': 2531},
-            {'cryptocurrency': 'Binance', 'amount_owned': 1.9755,
-             'current_price': 218, 'value': 431},
-            {'cryptocurrency': 'Ripple', 'amount_owned': 679,
-             'current_price': 0.5, 'value': 339},
-            {'cryptocurrency': 'Cardano', 'amount_owned': 450,
-             'current_price': 0.25, 'value': 114}
-            # Add more holdings as needed
-        ]
-    }
-
     dummy_user_data = {
         'Crypto User 1': {
             'user_name': 'John Dow',

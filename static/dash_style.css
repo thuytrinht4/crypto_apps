@@ -57,7 +57,7 @@ section {
 
 /* Table styling */
 table {
-    width: 100%;
+    width: 40%;
     border-collapse: collapse;
     border: 1px solid #ddd;
 }
@@ -65,8 +65,20 @@ table {
 table th,
 table td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
+}
+
+/* Decrease row height for cryptocurrency portfolio */
+.portfolio table tbody tr {
+    height: 10px;
+    /* Adjust the row height as needed */
+}
+
+/* Decrease cell padding for cryptocurrency portfolio */
+.portfolio table td {
+    padding: 5px;
+    /* Adjust the padding as needed */
 }
 
 /* Responsive styling */
@@ -79,4 +91,16 @@ table td {
     nav ul li {
         margin: 10px 0;
     }
+}
+
+/* Increase font size for large value */
+.large-value {
+    font-size: 28px;
+    /* Adjust the font size as needed */
+}
+
+/* Increase left margin for large value */
+.large-value {
+    margin-left: 20px;
+    /* Adjust the left margin as needed */
 }

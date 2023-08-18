@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Cryptocurrency Trader Dashboard</title>
+    <title>Gemini Cryptocurrency Index User Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../static/dash_style.css">
     <!-- Include Plotly.js library -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -10,17 +10,26 @@
 
 <body>
     <header>
-        <h1>Cryptocurrency Trader Dashboard</h1>
+        <h1>Gemini Cryptocurrency Index User Dashboard</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
                 <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Portfolio Distribution</a></li>
                 <li><a href="#">Historical Performance</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
+
+    <section class="total-portfolio">
+        <h2>Your Portfolio Value</h2>
+        <p class="portfolio-value large-value">${{ session.total_fund | default(0) | format_currency }}</p>
+    </section>
+
+    <section class="subscription-info">
+        <h2>Your Cryptocurrency Index Fund Information</h2>
+        <p><strong>Selected Index:</strong> {{ user_data.eft.etf_name }}</p>
+        <p><strong>Index Detail:</strong> {{ user_data.eft.etf_detail }}</p>
+    </section>
 
     <section class="portfolio">
         <h2>Your Portfolio</h2>
@@ -36,8 +45,8 @@
             <tr>
                 <td>{{ holding.cryptocurrency }}</td>
                 <td>{{ holding.amount_owned }}</td>
-                <td>{{ holding.current_price }}</td>
-                <td>{{ holding.value }}</td>
+                <td>${{ holding.current_price | format_currency(decimal_num=2) }}</td>
+                <td>${{ holding.value | format_currency(decimal_num=2) }}</td>
             </tr>
             {% endfor %}
         </table>
@@ -53,6 +62,18 @@
         // Access user_data from the template context
         const user_data = {{ user_data | tojson | safe }};
 
+        // Function to format numbers as currency
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).format(value);
+        }
+        // user_data.portfolio.forEach(holding => {
+        //     holding.value = formatCurrency(holding.value);
+        // });
+
+
         // <!-- Display live cryptocurrency market data, charts, etc. -->
         function updatePortfolioDistribution() {
             const labels = user_data.portfolio.map(holding => holding.cryptocurrency);
@@ -65,6 +86,8 @@
             };
             const layout = {
                 title: 'Portfolio Distribution',
+                width: 500, // Adjust the width as needed
+                height: 500, // Adjust the height as needed
             };
             Plotly.newPlot('portfolio-pie', [trace], layout);
         }

@@ -57,7 +57,7 @@ section {
 
 /* Table styling */
 table {
-    width: 40%;
+    width: 75%;
     border-collapse: collapse;
     border: 1px solid #ddd;
 }
@@ -103,4 +103,24 @@ table td {
 .large-value {
     margin-left: 20px;
     /* Adjust the left margin as needed */
+}
+
+/* Increase left margin for the whole dashboard content */
+.dashboard-content {
+    margin-left: 50px;
+    /* Adjust the margin as needed */
+}
+
+/* Increase left margin for the portfolio distribution graph */
+.graph-container {
+    margin-left: auto;
+    /* Center horizontally */
+}
+
+/* Center the whole dashboard content horizontally */
+body {
+    margin: 0 auto;
+    /* Center horizontally */
+    max-width: 800px;
+    /* Optionally, set a maximum width for content */
 }

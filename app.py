@@ -51,7 +51,7 @@ def dashboard():
     # user_data as a dummy data
     dummy_user_data = {
         'Crypto User 1': {
-            'user_name': 'Crypto User 1',
+            'user_name': 'Victor del Rosal',
             'email': 'crypto_user1@gemini_test.com',
             'eft': {
                 'etf_name': 'ETF-5',
@@ -72,7 +72,7 @@ def dashboard():
             ]
         },
         'Crypto User 2': {
-            'user_name': 'Crypto User 2',
+            'user_name': 'Tuan Trinh',
             'email': 'crypto_user1@gemini_test.com',
             'eft': {
                 'etf_name': 'ETF-2',
